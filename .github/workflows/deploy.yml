@@ -1,14 +1,14 @@
 name : pipline to test our production
 on:
   push:
-    branch:
+    branches:
       - master
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      uses: actions/checkout@v2
-      run: docker login -u $ {{ secrets.DOCKER_USERNAME }} -p $ {{ secrets.DOCKER_PASSWORD }}
-      run: docker build kamal2274/react-test -f Dockerfile.dev
-      run: docker run -e CI=true kamal2274/react-test npm run test  
+      - uses: actions/checkout@v2
+      - run: docker login -u $ {{ secrets.DOCKER_USERNAME }} -p $ {{ secrets.DOCKER_PASSWORD }}
+      - run: docker build kamal2274/react-test -f Dockerfile.dev
+      - run: docker run -e CI=true kamal2274/react-test npm run test  
